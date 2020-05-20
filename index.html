@@ -22,6 +22,7 @@
         "Worked various jobs to provide for myself after dropping out of college, mostly overnight security jobs"
       var militaryServiceSummary =
         "Enlisted in the United States Army as a medic in December 2008 and served on active duty until September 2014"
+      
 
       dataTable.addColumn({
         type: 'string',
@@ -47,7 +48,7 @@
       dataTable.addRows([
         ['first', 'College', `${collegeSummmary}`, new Date(2006, 8), new Date(2007, 12)],
         ['second', 'Odd Jobs', `${oddJobsSummary }`, new Date(2008, 1), new Date(2008, 12)],
-        ['third', 'Military Service', `${militaryServiceSummary}`, new Date(2008, 12), new Date(2014, 9)]
+        ['third', 'Military Service', `${militaryServiceSummary}`, new Date(2008, 12), new Date(2014, 9)],
       ]);
 
       var options = {
@@ -56,82 +57,95 @@
         }
       };
       chart.draw(dataTable, options);
-      console.log(dataTable.hg)
 
+
+      // function clickHandler(e) {
+      //   console.log(e.target.id)
+
+
+      // }
+
+      // dataTable.hg.forEach(item => {
+      //   // console.log(item.c[0])
+      //   let element = document.getElementById(item.c[0].v)
+      //   element.addEventListener('click', clickHandler)
+      //   // console.log(element)
+      // })
+
+      // google.visualization.events.addListener(chart, 'select', selectHandler)
+
+      // function selectHandler(e) {
+      //   let click = chart.getSelection()
+      //   console.log(click)
+      //   let value = click[0].row
+      //   let chosenId = dataTable.getValue(value, 0)
+
+      //   let selected = document.getElementById(chosenId)
+      //   // console.log(selected)
+      //   let first = false
+      //   let second = false
+      //   let third = false
+
+      //   console.log(selected.id)
+      //   if(selected.id === 'first') {
+      //     if (first === false) {
+      //       first = true
+      //       selected.style.display = 'none'
+      //     } else {
+      //       first = false
+      //       selected.style.display = 'block'
+      //     }
+      //   }
+
+      //   if(selected.id === 'second') {
+      //     if (second === false) {
+      //       second = true
+      //       selected.style.display = 'none'
+      //     } else {
+      //       second = false
+      //       selected.style.display = 'block'
+      //     }
+      //   }
+
+      //   if(selected.id === 'third') {
+      //     if (third === false) {
+      //       third = true
+      //       selected.style.display = 'none'
+      //     } else {
+      //       third = false
+      //       selected.style.display = 'block'
+      //     }
+      //   }
+      //   // function displayHandler(e) {
+      //   // // if(selected.style.display = 'none') {
+      //   // //   selected.style.display = 'block'
+      //   // //   console.log('visible', selected.style.display)
+      //   // // } 
+
+      //   // // if(selected.style.display = 'block') {
+      //   // //   selected.style.display = 'none'
+      //   // //   console.log('invisible', selected.style.display)
+      //   // // }
+
+
+      //   // }
+      //   // selected.addEventListener('click', displayHandler)
+
+      // }
 
       function clickHandler(e) {
-        console.log(e.target.id)
 
-
+        let id = e.target.id
+        document.getElementsByClassName(id)[0].style.display = 'block'
+        
       }
+      let elements = document.querySelectorAll('span')
+      let first, second, third;
+      elements.forEach(item => {
+        item.addEventListener('click', clickHandler)
 
-      dataTable.hg.forEach(item => {
-        // console.log(item.c[0])
-        let element = document.getElementById(item.c[0].v)
-        element.addEventListener('click', clickHandler)
-        // console.log(element)
       })
 
-      google.visualization.events.addListener(chart, 'select', selectHandler)
-
-      function selectHandler(e) {
-        let click = chart.getSelection()
-        console.log(click)
-        let value = click[0].row
-        let chosenId = dataTable.getValue(value, 0)
-
-        let selected = document.getElementById(chosenId)
-        // console.log(selected)
-        let first = false
-        let second = false
-        let third = false
-
-        console.log(selected.id)
-        if(selected.id === 'first') {
-          if (first === false) {
-            first = true
-            selected.style.display = 'none'
-          } else {
-            first = false
-            selected.style.display = 'block'
-          }
-        }
-
-        if(selected.id === 'second') {
-          if (second === false) {
-            second = true
-            selected.style.display = 'none'
-          } else {
-            second = false
-            selected.style.display = 'block'
-          }
-        }
-
-        if(selected.id === 'third') {
-          if (third === false) {
-            third = true
-            selected.style.display = 'none'
-          } else {
-            third = false
-            selected.style.display = 'block'
-          }
-        }
-        // function displayHandler(e) {
-        // // if(selected.style.display = 'none') {
-        // //   selected.style.display = 'block'
-        // //   console.log('visible', selected.style.display)
-        // // } 
-
-        // // if(selected.style.display = 'block') {
-        // //   selected.style.display = 'none'
-        // //   console.log('invisible', selected.style.display)
-        // // }
-
-
-        // }
-        // selected.addEventListener('click', displayHandler)
-
-      }
     }
   </script>
   <title>OK, KO!</title>
@@ -139,16 +153,21 @@
 </head>
 
 <body>
-  <p>Coming soon, to a browser near you...</p>
   <div id="timeline" style="height: 180px;"></div>
-  <div id="first">
-    <p>college</p>
+  <div >
+    <h1><span id="first">College </span></h1>
+    <p class="first" style="display:none;">info</p>
+    <br><hr>
   </div>
-  <div id="second">
-    <p>Odd Jobs</p>
+  <div >
+    <h1><span id="second">Odd Jobs </span></h1>
+    <p class="second"  style="display:none;">info</p>
+    <br><hr>
   </div>
-  <div id="third">
-    <p>military service</p>
+  <div >
+    <h1> <span id="third">Military service </span></h1>
+    <p class="third"  style="display:none;"> info</p>
+    <br><hr>
   </div>
 </body>
 
